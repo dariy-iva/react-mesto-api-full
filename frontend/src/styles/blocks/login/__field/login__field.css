@@ -1,0 +1,9 @@
+.login__field {
+  display: block;
+}
+.login__field:not(:last-of-type) {
+	margin-bottom: 32px;
+}
+.login__field:last-of-type {
+	margin-bottom: 216px;
+}

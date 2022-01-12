@@ -1,0 +1,6 @@
+.popup__img-status-regist {
+  display: block;
+  margin: 0 auto;
+  padding: calc(60px - 34px) 0 32px;
+  width: 120px;
+}

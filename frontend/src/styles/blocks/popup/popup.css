@@ -1,0 +1,39 @@
+@import url(./_content/popup_content_photo.css);
+@import url(./_opened/popup_opened.css);
+@import url(./__container/popup__container.css);
+@import url(./__title/popup__title.css);
+@import url(./__title/_no-input/popup__title_no-input.css);
+@import url(./__fieldset/popup__fieldset.css);
+@import url(./__field/popup__field.css);
+@import url(./__input/popup__input.css);
+@import url(./__input/_content/popup__input_content_name.css);
+@import url(./__input/_type/popup__input_type_error.css);
+@import url(./__error/popup__error.css);
+@import url(./__error/_visible/popup__error_visible.css);
+@import url(./__submit-button/popup__submit-button.css);
+@import url(./__submit-button/_inactive/popup__submit-button_inactive.css);
+@import url(./__loading/popup__loading.css);
+@import url(./__reset-button/popup__reset-button.css);
+@import url(./__photo-box/popup__photo-box.css);
+@import url(./__photo/popup__photo.css);
+@import url(./__caption-photo/popup__caption-photo.css);
+@import url(./__img-status-regist/popup__img-status-regist.css);
+@import url(./__caption-status-regist/popup__caption-status-regist.css);
+
+.popup {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .5);
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility .4s, opacity .4s;
+}
+@media (max-width: 767px) {
+	.popup {
+		padding: 0 19px;
+	}
+}

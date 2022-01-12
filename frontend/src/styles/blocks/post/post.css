@@ -1,0 +1,18 @@
+@import url(./__photo/post__photo.css);
+@import url(./__caption/post__caption.css);
+@import url(./__like-button/post__like-button.css);
+@import url(./__del-button/post__del-button.css);
+@import url(./__del-button/_visible/post__del-button_visible.css);
+@import url(./__likes/post__likes.css);
+@import url(./__like-button/_active/post__like-button_active.css);
+@import url(./__likes-number/post__likes-number.css);
+
+.post {
+	width: 282px;
+	height: 361px;
+	margin: 0;
+	border-radius: 10px;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;	
+}
