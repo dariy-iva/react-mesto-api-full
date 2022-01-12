@@ -18,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./build/* dashann@62.84.116.103:/home/dashann/frontend-mesto"
+    "deploy": "npm run build && scp -r ./build/* dashann@51.250.7.145:/home/dashann/react-mesto-api-full/frontend"
   },
   "eslintConfig": {
     "extends": [
@@ -43,12 +43,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dariy-iva/react-mesto-auth.git/"
+    "url": "git+https://github.com/dariy-iva/react-mesto-api-full.git/"
   },
   "author": "Daria Ivanova",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dariy-iva/react-mesto-auth/issues/"
+    "url": "https://github.com/dariy-iva/react-mesto-api-full/issues/"
   },
   "homepage": "https://mesto.dariy-iva.nomoredomains.rocks"
   
