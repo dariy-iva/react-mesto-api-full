@@ -18,7 +18,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "pages": "gh-pages -d build",
     "deploy": "npm run build && scp -r ./build/* dashann@62.84.116.103:/home/dashann/frontend-mesto"
   },
   "eslintConfig": {
