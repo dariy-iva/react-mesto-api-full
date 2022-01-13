@@ -30,10 +30,6 @@ export const authorize = (email, password) => {
     body: JSON.stringify({email, password})
   })
   .then(verifyResolve)
-  .then((data) => {
-      localStorage.setItem('jwt', data.token);
-      return data;
-  })
 };
 
 export const checkToken = () => {
@@ -46,5 +42,4 @@ export const checkToken = () => {
     }
   })
   .then(verifyResolve)
-  // .then(data => data)
 }

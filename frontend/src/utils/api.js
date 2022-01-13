@@ -74,7 +74,7 @@ class Api {
   }
 
   changeLikePostStatus(postId, isLiked) {
-    return fetch(`${this._adress}/cards/likes/${postId}`, {
+    return fetch(`${this._adress}/cards/${postId}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
       credentials: 'include',
     })

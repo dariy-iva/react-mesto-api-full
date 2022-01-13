@@ -38,21 +38,23 @@ export default function App() {
   const [posts, setPosts] = React.useState([]);
 
   React.useEffect(() => {
-    api
+    if (loggedIn) {
+      api
       .getUserInfo()
       .then((data) => {
         setCurrentUser(data);
       })
       .catch((err) => console.log(err));
-  }, []);
 
-  React.useEffect(() => {
     api
       .getPosts()
       .then((data) => {
         setPosts(data);
       })
       .catch((err) => console.log(err));
+    }
+    history('/');
+    
   }, []);
 
   React.useEffect(() => {
@@ -156,27 +158,12 @@ export default function App() {
   }
 
   function handleTokenCheck() {
-    // if (localStorage.getItem("jwt")) {
-    //   const jwt = localStorage.getItem("jwt");
-    //   auth
-    //     .checkToken(jwt)
-    //     .then((res) => {
-    //       if (res) {
-    //         setCurrentEmail(res.data.email);
-    //         setLoggedIn(true);
-    //         history("/");
-    //       }
-    //     })
-    //     .catch((err) => console.log(err));
-    // }
     auth
       .checkToken()
       .then((res) => {
         if (res) {
           setCurrentEmail(res.data.email);
-          // setCurrentUser(res.data);
           setLoggedIn(true);
-          history("/");
         }
       })
       .catch((err) => console.log(err));
@@ -187,8 +174,8 @@ export default function App() {
       .authorize(email, password)
       .then((data) => {
         if (data) {
+          handleTokenCheck();
           setLoggedIn(true);
-          history("/");
         }
       })
       .catch((err) => console.log(err));
@@ -213,7 +200,6 @@ export default function App() {
   }
 
   function handleSignOut() {
-    // localStorage.removeItem("jwt");
     setLoggedIn(false);
   }
 
