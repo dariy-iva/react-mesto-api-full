@@ -29,8 +29,8 @@ const limiter = rateLimit({
 
 app.use(requestLogger);
 app.use(limiter);
-app.use(cors);
 app.use(cookieParser());
+app.use(cors);
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
