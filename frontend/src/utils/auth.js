@@ -46,5 +46,5 @@ export const checkToken = () => {
     }
   })
   .then(verifyResolve)
-  .then(data => data)
+  // .then(data => data)
 }

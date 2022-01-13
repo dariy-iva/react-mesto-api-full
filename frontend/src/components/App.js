@@ -172,12 +172,9 @@ export default function App() {
     auth
       .checkToken()
       .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
         if (res) {
           setCurrentEmail(res.data.email);
-          setCurrentUser(res.data);
+          // setCurrentUser(res.data);
           setLoggedIn(true);
           history("/");
         }
@@ -216,7 +213,7 @@ export default function App() {
   }
 
   function handleSignOut() {
-    localStorage.removeItem("jwt");
+    // localStorage.removeItem("jwt");
     setLoggedIn(false);
   }
 
