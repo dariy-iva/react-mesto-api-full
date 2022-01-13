@@ -11,9 +11,16 @@ const { createUser, login } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-err');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+// const cors = require('cors');
 const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
+
+// const allowedCors = [
+//   'https://mesto.dariy-iva.nomoredomains.rocks/',
+//   'http://mesto.dariy-iva.nomoredomains.rocks/',
+//   'localhost:3000',
+// ];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

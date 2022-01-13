@@ -1,6 +1,6 @@
 const allowedCors = [
-  'https://mesto.dariy-iva.nomoredomains.rocks/',
-  'http://mesto.dariy-iva.nomoredomains.rocks/',
+  'https://mesto.dariy-iva.nomoredomains.rocks',
+  'http://mesto.dariy-iva.nomoredomains.rocks',
   'localhost:3000',
 ];
 
