@@ -1,7 +1,6 @@
 class Api {
   constructor(objConfig) {
-    this._token = objConfig.token;
-    this._id = objConfig.id;
+    // this._token = objConfig.token;
     this._adress = objConfig.adress;
   }
 
@@ -10,26 +9,26 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._adress}/v1/${this._id}/users/me`, {
-      headers: {
-        authorization: this._token,
-      },
+    return fetch(`${this._adress}/users/me`, {
+      // headers: {
+      //   authorization: this._token,
+      // },
     }).then(this._verifyResolve);
   }
 
   getPosts() {
-    return fetch(`${this._adress}/v1/${this._id}/cards`, {
-      headers: {
-        authorization: this._token,
-      },
+    return fetch(`${this._adress}/cards`, {
+      // headers: {
+      //   authorization: this._token,
+      // },
     }).then(this._verifyResolve);
   }
 
   setUserInfo(data) {
-    return fetch(`${this._adress}/v1/${this._id}/users/me`, {
+    return fetch(`${this._adress}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -40,10 +39,10 @@ class Api {
   }
 
   setUserAvatar(data) {
-    return fetch(`${this._adress}/v1/${this._id}/users/me/avatar`, {
+    return fetch(`${this._adress}/users/me/avatar`, {
       method: "PATCH",
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -53,10 +52,10 @@ class Api {
   }
 
   addPost(data) {
-    return fetch(`${this._adress}/v1/${this._id}/cards`, {
+    return fetch(`${this._adress}/cards`, {
       method: "POST",
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -67,28 +66,27 @@ class Api {
   }
 
   deletePost(postId) {
-    return fetch(`${this._adress}/v1/${this._id}/cards/${postId}`, {
+    return fetch(`${this._adress}/cards/${postId}`, {
       method: "DELETE",
-      headers: {
-        authorization: this._token,
-      },
+      // headers: {
+      //   authorization: this._token,
+      // },
     }).then(this._verifyResolve);
   }
 
   changeLikePostStatus(postId, isLiked) {
-    return fetch(`${this._adress}/v1/${this._id}/cards/likes/${postId}`, {
+    return fetch(`${this._adress}/cards/likes/${postId}`, {
       method: isLiked ? "DELETE" : "PUT",
-      headers: {
-        authorization: this._token,
-      },
+      // headers: {
+      //   authorization: this._token,
+      // },
     }).then(this._verifyResolve);
   }
 }
 
 const apiConfig = {
-  token: "036b7b31-eb11-4936-b88e-e4dfd598930e",
-  id: "cohort-28",
-  adress: "https://mesto.nomoreparties.co",
+  // token: "036b7b31-eb11-4936-b88e-e4dfd598930e",
+  adress: "https://api.mesto.dariy-iva.nomoredomains.rocks",
 };
 
 export const api = new Api(apiConfig);

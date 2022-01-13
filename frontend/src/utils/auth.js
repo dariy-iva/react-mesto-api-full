@@ -1,4 +1,4 @@
-const base_url = 'https://auth.nomoreparties.co';
+const base_url = 'https://api.mesto.dariy-iva.nomoredomains.rocks';
 
 function verifyResolve(res) {
   return res.ok ? res.json() : Promise.reject(res.status);
