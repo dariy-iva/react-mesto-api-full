@@ -156,26 +156,40 @@ export default function App() {
   }
 
   function handleTokenCheck() {
-    if (localStorage.getItem("jwt")) {
-      const jwt = localStorage.getItem("jwt");
-      auth
-        .checkToken(jwt)
-        .then((res) => {
-          if (res) {
-            setCurrentEmail(res.data.email);
-            setLoggedIn(true);
-            history("/");
-          }
-        })
-        .catch((err) => console.log(err));
-    }
+    // if (localStorage.getItem("jwt")) {
+    //   const jwt = localStorage.getItem("jwt");
+    //   auth
+    //     .checkToken(jwt)
+    //     .then((res) => {
+    //       if (res) {
+    //         setCurrentEmail(res.data.email);
+    //         setLoggedIn(true);
+    //         history("/");
+    //       }
+    //     })
+    //     .catch((err) => console.log(err));
+    // }
+    auth
+      .checkToken()
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        if (res) {
+          setCurrentEmail(res.data.email);
+          setCurrentUser(res.data);
+          setLoggedIn(true);
+          history("/");
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleLogin(email, password) {
     auth
       .authorize(email, password)
       .then((data) => {
-        if (data.token) {
+        if (data) {
           setLoggedIn(true);
           history("/");
         }
