@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
+// const crypto = require('crypto');
 const UnauthorizedError = require('../errors/unauthorized-err');
 
-// const { JWT_SECRET = 'dev-secret' } = process.env;
-const JWT_SECRET = crypto.randomBytes(16).toString('hex');
+const { JWT_SECRET = 'dev-secret' } = process.env;
+// const JWT_SECRET = crypto.randomBytes(16).toString('hex');
 
 module.exports.auth = (req, res, next) => {
   const token = req.cookies.jwt;
@@ -23,4 +23,4 @@ module.exports.auth = (req, res, next) => {
   next();
 };
 
-module.exports.JWT_SECRET = JWT_SECRET;
+// module.exports.JWT_SECRET = JWT_SECRET;
