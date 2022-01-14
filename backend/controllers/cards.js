@@ -8,7 +8,7 @@ module.exports.createCard = (req, res, next) => {
   const userId = req.user._id;
 
   Card.create({ name, link, owner: userId })
-    .then((card) => res.status(200).send({ data: card }))
+    .then((card) => res.status(200).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError('Переданы некорректные данные'));
@@ -19,7 +19,7 @@ module.exports.createCard = (req, res, next) => {
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate('owner')
-    .then((cards) => res.status(200).send({ data: cards }))
+    .then((cards) => res.status(200).send(cards))
     .catch(next);
 };
 module.exports.deleteCard = (req, res, next) => {
@@ -34,7 +34,7 @@ module.exports.deleteCard = (req, res, next) => {
       if (!card.owner.equals(userId)) {
         throw new ForbiddenError('Невозможно удалить чужую карточку');
       }
-      return card.remove().then(() => res.status(200).send({ data: card }));
+      return card.remove().then(() => res.status(200).send(card));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -57,7 +57,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
       }
-      res.status(200).send({ data: card });
+      res.status(200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -76,7 +76,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
       }
-      res.status(200).send({ data: card });
+      res.status(200).send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {

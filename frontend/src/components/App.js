@@ -38,8 +38,7 @@ export default function App() {
   const [posts, setPosts] = React.useState([]);
 
   React.useEffect(() => {
-    if (loggedIn) {
-      api
+    api
       .getUserInfo()
       .then((data) => {
         setCurrentUser(data);
@@ -52,9 +51,6 @@ export default function App() {
         setPosts(data);
       })
       .catch((err) => console.log(err));
-    }
-    history('/');
-    
   }, []);
 
   React.useEffect(() => {
@@ -106,7 +102,7 @@ export default function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .changeLikePostStatus(card._id, isLiked)
       .then((newPost) => {
@@ -128,10 +124,12 @@ export default function App() {
   }
 
   function handleUpdateAvatar(data) {
+    console.log(data);
     api
       .setUserAvatar(data)
       .then((data) => {
         setCurrentUser(data);
+        console.log(currentUser);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
@@ -162,7 +160,9 @@ export default function App() {
       .checkToken()
       .then((res) => {
         if (res) {
-          setCurrentEmail(res.data.email);
+          const dataUser = res.data;
+          setCurrentEmail(dataUser.email);
+          setCurrentUser(dataUser);
           setLoggedIn(true);
         }
       })
@@ -176,6 +176,7 @@ export default function App() {
         if (data) {
           handleTokenCheck();
           setLoggedIn(true);
+          history("/");
         }
       })
       .catch((err) => console.log(err));
