@@ -52,9 +52,9 @@ export default function App() {
           setPosts(data);
         })
         .catch((err) => console.log(err));
-        history("/");
+
+      history("/");
     }
-    
   }, [loggedIn]);
 
   React.useEffect(() => {
@@ -174,9 +174,7 @@ export default function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        if (data) {
-          setLoggedIn(true);
-          console.log(loggedIn)
+        if (data.token) {
           handleTokenCheck();
         }
       })
@@ -203,9 +201,7 @@ export default function App() {
 
   function handleSignOut() {
     setLoggedIn(false);
-    auth
-      .logout()
-      .catch((err) => console.log(err));
+    auth.logout();
   }
 
   return (
