@@ -19,12 +19,14 @@ module.exports.createUser = (req, res, next) => {
       bcrypt
         .hash(password, 10)
         .then((hash) => User.create({
-          name, about, avatar, email, password: hash,
+          name,
+          about,
+          avatar,
+          email,
+          password: hash,
         }))
         .then(() => res.status(200).send({
-          data: {
-            name, about, avatar, email,
-          },
+          name, about, avatar, email,
         }));
     })
     .catch((err) => {
@@ -59,7 +61,7 @@ module.exports.login = (req, res, next) => {
 };
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.status(200).send({ data: users }))
+    .then((users) => res.status(200).send(users))
     .catch(next);
 };
 module.exports.getUser = (req, res, next) => {
@@ -70,7 +72,7 @@ module.exports.getUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -87,7 +89,7 @@ module.exports.getCurrentUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -113,7 +115,7 @@ module.exports.updateUserProfile = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -132,16 +134,12 @@ module.exports.updateUserAvatar = (req, res, next) => {
     throw new ValidationError('Переданы некорректные данные');
   }
 
-  User.findByIdAndUpdate(
-    userId,
-    { avatar },
-    { new: true, runValidators: true },
-  )
+  User.findByIdAndUpdate(userId, { avatar }, { new: true, runValidators: true })
     .then((user) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

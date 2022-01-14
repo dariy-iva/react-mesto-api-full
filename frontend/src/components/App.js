@@ -38,7 +38,8 @@ export default function App() {
   const [posts, setPosts] = React.useState([]);
 
   React.useEffect(() => {
-    api
+    if (loggedIn === true) {
+      api
       .getUserInfo()
       .then((data) => {
         setCurrentUser(data);
@@ -51,7 +52,9 @@ export default function App() {
         setPosts(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+    }
+    
+  }, [loggedIn]);
 
   React.useEffect(() => {
     handleTokenCheck();
