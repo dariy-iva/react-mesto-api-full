@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-require('dotenv').config();
+// require('dotenv').config();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
