@@ -52,7 +52,7 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: userId } },
     { new: true },
   )
-    .populate(['owner', 'likes'])
+    // .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
