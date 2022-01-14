@@ -10,7 +10,7 @@ export default function Card({ card, onCardClick, onCardLike, onCardDeleteClick 
     isOwn && "post__del-button_visible"
   }`;
   console.log(likes, currentUser._id)
-  const isLiked = likes.some((i) => i._id === currentUser._id);
+  const isLiked = likes.some((i) => i === currentUser._id);
   console.log(isLiked)
   const buttonLikeClassName = `post__like-button ${
     isLiked && "post__like-button_active"
