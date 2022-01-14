@@ -40,20 +40,21 @@ export default function App() {
   React.useEffect(() => {
     if (loggedIn === true) {
       api
-      .getUserInfo()
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => console.log(err));
+        .getUserInfo()
+        .then((data) => {
+          setCurrentUser(data);
+        })
+        .catch((err) => console.log(err));
 
-    api
-      .getPosts()
-      .then((data) => {
-        setPosts(data);
-      })
-      .catch((err) => console.log(err));
+      api
+        .getPosts()
+        .then((data) => {
+          setPosts(data);
+        })
+        .catch((err) => console.log(err));
+        history("/");
     }
-    history("/");
+    
   }, [loggedIn]);
 
   React.useEffect(() => {
@@ -174,8 +175,9 @@ export default function App() {
       .authorize(email, password)
       .then((data) => {
         if (data) {
-          handleTokenCheck();
           setLoggedIn(true);
+          console.log(loggedIn)
+          handleTokenCheck();
         }
       })
       .catch((err) => console.log(err));
@@ -201,6 +203,9 @@ export default function App() {
 
   function handleSignOut() {
     setLoggedIn(false);
+    auth
+      .logout()
+      .catch((err) => console.log(err));
   }
 
   return (

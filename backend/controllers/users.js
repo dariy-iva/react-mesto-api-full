@@ -64,6 +64,12 @@ module.exports.login = (req, res, next) => {
       next(err);
     });
 };
+module.exports.logout = (req, res) => {
+  res
+    .clearCookie('jwt')
+    .status(200)
+    .send('Успешный выход');
+};
 module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((users) => res.status(200).send(users))

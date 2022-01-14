@@ -32,6 +32,18 @@ export const authorize = (email, password) => {
   .then(verifyResolve)
 };
 
+export const logout = () => {
+  return fetch(`${base_url}/signout`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(verifyResolve)
+}
+
 export const checkToken = () => {
   return fetch(`${base_url}/users/me`, {
     method: 'GET',

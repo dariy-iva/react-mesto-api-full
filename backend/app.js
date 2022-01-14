@@ -8,7 +8,7 @@ const rateLimit = require('express-rate-limit');
 const mongoose = require('mongoose');
 const { celebrate, Joi, errors } = require('celebrate');
 const { isURL } = require('validator');
-const { createUser, login } = require('./controllers/users');
+const { createUser, login, logout } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-err');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -67,6 +67,7 @@ app.post(
   }),
   createUser,
 );
+app.post('/signout', logout);
 
 app.use(auth);
 app.use('/users', require('./routes/users'));
