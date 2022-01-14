@@ -42,6 +42,7 @@ export default function Main({
         />
       </section>
       <section className="posts">
+        {console.log(posts)}
         {posts.map((post) => (
           <Card
             card={post}
