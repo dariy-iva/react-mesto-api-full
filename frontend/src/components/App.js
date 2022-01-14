@@ -53,7 +53,7 @@ export default function App() {
       })
       .catch((err) => console.log(err));
     }
-    
+    history("/");
   }, [loggedIn]);
 
   React.useEffect(() => {
@@ -127,12 +127,10 @@ export default function App() {
   }
 
   function handleUpdateAvatar(data) {
-    console.log(data);
     api
       .setUserAvatar(data)
       .then((data) => {
         setCurrentUser(data);
-        console.log(currentUser);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
@@ -178,7 +176,6 @@ export default function App() {
         if (data) {
           handleTokenCheck();
           setLoggedIn(true);
-          history("/");
         }
       })
       .catch((err) => console.log(err));

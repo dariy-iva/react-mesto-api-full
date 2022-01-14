@@ -6,7 +6,6 @@ export default function Card({ card, onCardClick, onCardLike, onCardDeleteClick 
 
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = owner === currentUser._id;
-  console.log(isOwn, owner, currentUser._id)
   const buttonDeleteClassName = `post__del-button ${
     isOwn && "post__del-button_visible"
   }`;
