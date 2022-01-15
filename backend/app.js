@@ -65,7 +65,8 @@ app.post(
 app.post('/signout', logout);
 
 app.use(auth);
-app.use('/users', router);
+app.use('/users', require('./routes/users'));
+
 app.use('/cards', router);
 
 app.use('*', (req, res, next) => {
