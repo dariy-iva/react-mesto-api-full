@@ -9,17 +9,19 @@ const {
   dislikeCard,
 } = require('../controllers/cards');
 
+const checkURL = (value) => {
+  if (!isURL(value, { require_protocol: true })) {
+    throw new Error('Неправильный формат ссылки');
+  }
+  return value;
+};
+
 router.post(
   '/',
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().required().min(2).max(30),
-      link: Joi.string().required().custom((value) => {
-        if (!isURL(value, { require_protocol: true })) {
-          throw new Error('Неправильный формат ссылки');
-        }
-        return value;
-      }),
+      link: Joi.string().required().custom(checkURL),
     }),
   }),
   createCard,
@@ -53,4 +55,4 @@ router.delete(
   dislikeCard,
 );
 
-module.exports = router;
+module.exports = { router, checkURL };
