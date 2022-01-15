@@ -9,13 +9,6 @@ const {
   dislikeCard,
 } = require('../controllers/cards');
 
-// const checkUrl = (value) => {
-//   if (!isURL(value, { require_protocol: true })) {
-//     throw new Error('Неправильный формат ссылки');
-//   }
-//   return value;
-// };
-
 router.post(
   '/',
   celebrate({
@@ -60,4 +53,4 @@ router.delete(
   dislikeCard,
 );
 
-module.exports = { router };
+module.exports = router;
